@@ -1,5 +1,9 @@
 
 
+
+
+
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +21,43 @@ const tabContent = {
   experience: {
     title: "Projects & Experience",
     items: [
+       // New projects
+      {
+        role: "Full Stack Developer (Project)",
+        company: "E-Tution - Tuition Management Platform",
+        period: "Jan 2026 - Present",
+        description: "Built a comprehensive tuition management platform connecting Students, Tutors, and Admins. Features include role-based dashboards (Student/Tutor/Admin), tuition post management, tutor application system, Stripe payment integration for tutor approval, transaction history, and advanced search/filter/sort with pagination. Implemented Firebase Authentication, JWT role verification, and real-time updates using Redux Toolkit and React Query.",
+        highlights: [
+          "React 19",
+          "Redux Toolkit",
+          "React Query",
+          "Tailwind CSS",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Stripe API",
+          "Firebase Auth",
+          "JWT",
+        ],
+      },
+      {
+        role: "Full Stack Developer (Project)",
+        company: "School Management System",
+        period: "Dec 2025 - Feb 2026",
+        description: "Developed a complete school management system with multiple user roles (Admin, Teacher, Student, Parent). Features include student enrollment, attendance tracking, grade management, fee collection, exam scheduling, and dynamic report generation. Built with MERN stack, integrated PDF exports, and real-time notifications using Socket.io.",
+        highlights: [
+          "React.js",
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Socket.io",
+          "JWT",
+          "Tailwind CSS",
+          "PDF Generation",
+        ],
+      },
+    
+  
       {
         role: "Full Stack Developer (Project)",
         company: "PawMart - Pet Adoption Platform",
@@ -124,11 +165,9 @@ const tabContent = {
   },
 };
 
-
-
 const ResumePage = () => {
   return (
-    <section className="flex flex-col justify-center text-white py-10">
+    <section className="flex flex-col justify-center text-white py-8 sm:py-12 md:py-16">
       <Container>
         <motion.div
           initial={{ opacity: 0 }}
@@ -142,26 +181,30 @@ const ResumePage = () => {
             defaultValue="experience"
             className="w-full flex flex-col md:flex-row gap-6 md:gap-10"
           >
-            <TabsList className="flex md:flex-col h-full bg-transparent md:w-64 gap-4">
+            {/* Sidebar Tabs */}
+            <TabsList className="flex flex-col w-full md:w-64 gap-3 bg-transparent h-10 mt-3">
               {tabMenu.map((item) => (
                 <TabsTrigger
                   key={item.value}
                   value={item.value}
-                  className="bg-white/10 w-full py-2.5 text-white data-[state=active]:bg-hoverColor hover:bg-lightSky/50 text-xs sm:text-sm"
+                  className="bg-white/10 w-full py-2.5 px-4 text-white data-[state=active]:bg-hoverColor hover:bg-lightSky/50 text-sm sm:text-base transition-all duration-200 justify-start"
                 >
-                  <div className="flex items-center gap-1.5 md:w-[50%] md:gap-3">
-                    <item.icon className="w-4 h-4 md:h-5 md:w-5" />
-                    {item.title}
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                    <span>{item.title}</span>
                   </div>
                 </TabsTrigger>
               ))}
             </TabsList>
+
+            {/* Content Area */}
             <div className="flex-1 min-h-[400px]">
+              {/* Experience Tab */}
               <TabsContent value="experience">
                 <motion.h2
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-2xl font-bold mb-6 text-lightSky"
+                  className="text-xl sm:text-2xl font-bold mb-6 text-lightSky"
                 >
                   {tabContent.experience.title}
                 </motion.h2>
@@ -172,24 +215,28 @@ const ResumePage = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="border rounded-lg border-lightSky/20 p-6"
+                      className="border rounded-lg border-lightSky/20 p-4 sm:p-6"
                     >
-                      <div className="flex justify-between items-start mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                         <div>
-                          <h3 className="text-lg font-semibold">{item.role}</h3>
-                          <p className="text-muted-foreground">
+                          <h3 className="text-base sm:text-lg font-semibold">
+                            {item.role}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
                             {item.company}
                           </p>
                         </div>
-                        <div className="flex items-center text-muted-foreground">
-                          <Calendar className="h-4 w-4 mr-2" />
-                          {item.period}
+                        <div className="flex items-center text-muted-foreground text-sm sm:text-base">
+                          <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 flex-shrink-0" />
+                          <span>{item.period}</span>
                         </div>
                       </div>
-                      <p className="mb-4">{item.description}</p>
+                      <p className="text-sm sm:text-base mb-4 leading-relaxed">
+                        {item.description}
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {item.highlights.map((highlight, i) => (
-                          <Badge key={i} variant="secondary">
+                          <Badge key={i} variant="secondary" className="text-xs sm:text-sm">
                             {highlight}
                           </Badge>
                         ))}
@@ -198,11 +245,13 @@ const ResumePage = () => {
                   ))}
                 </div>
               </TabsContent>
+
+              {/* Education Tab */}
               <TabsContent value="education">
                 <motion.h2
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-2xl font-bold mb-6 text-lightSky"
+                  className="text-xl sm:text-2xl font-bold mb-6 text-lightSky"
                 >
                   {tabContent.education.title}
                 </motion.h2>
@@ -213,26 +262,28 @@ const ResumePage = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="border rounded-lg border-lightSky/20 p-6"
+                      className="border rounded-lg border-lightSky/20 p-4 sm:p-6"
                     >
-                      <div className="flex justify-between items-start mb-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                         <div>
-                          <h3 className="text-lg font-semibold">
+                          <h3 className="text-base sm:text-lg font-semibold">
                             {item.degree}
                           </h3>
-                          <p className="text-muted-foreground">
+                          <p className="text-sm text-muted-foreground">
                             {item.institution}
                           </p>
                         </div>
-                        <div className="flex items-center text-muted-foreground">
-                          <Calendar className="h-4 w-4 mr-2" />
-                          {item.period}
+                        <div className="flex items-center text-muted-foreground text-sm sm:text-base">
+                          <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 flex-shrink-0" />
+                          <span>{item.period}</span>
                         </div>
                       </div>
-                      <p className="mb-4">{item.description}</p>
+                      <p className="text-sm sm:text-base mb-4 leading-relaxed">
+                        {item.description}
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {item.achievements.map((achievement, i) => (
-                          <Badge key={i} variant="secondary">
+                          <Badge key={i} variant="secondary" className="text-xs sm:text-sm">
                             {achievement}
                           </Badge>
                         ))}
@@ -241,11 +292,13 @@ const ResumePage = () => {
                   ))}
                 </div>
               </TabsContent>
+
+              {/* Skills Tab */}
               <TabsContent value="skills">
                 <motion.h2
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-2xl font-bold mb-6 text-lightSky"
+                  className="text-xl sm:text-2xl font-bold mb-6 text-lightSky"
                 >
                   {tabContent.skills.title}
                 </motion.h2>
@@ -256,17 +309,17 @@ const ResumePage = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="border rounded-lg border-lightSky/20 p-6"
+                      className="border rounded-lg border-lightSky/20 p-4 sm:p-6"
                     >
-                      <h3 className="text-lg font-semibold mb-4">
+                      <h3 className="text-base sm:text-lg font-semibold mb-3">
                         {category.name}
                       </h3>
-                      <p className="text-sm text-white/60 mb-4 font-normal leading-7">
+                      <p className="text-xs sm:text-sm text-white/60 mb-4 leading-relaxed">
                         {category.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {category.skills.map((skill, i) => (
-                          <Badge key={i} variant="secondary">
+                          <Badge key={i} variant="secondary" className="text-xs sm:text-sm">
                             {skill}
                           </Badge>
                         ))}
@@ -275,36 +328,44 @@ const ResumePage = () => {
                   ))}
                 </div>
               </TabsContent>
+
+              {/* About Tab */}
               <TabsContent value="about">
                 <motion.h2
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-2xl font-bold mb-6 text-lightSky"
+                  className="text-xl sm:text-2xl font-bold mb-6 text-lightSky"
                 >
                   {tabContent.about.title}
                 </motion.h2>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="border rounded-lg border-lightSky/20 p-6"
+                  className="border rounded-lg border-lightSky/20 p-4 sm:p-6"
                 >
-                  <p className="mb-6 text-lg">{tabContent.about.bio}</p>
+                  <p className="text-sm sm:text-base mb-6 leading-relaxed">
+                    {tabContent.about.bio}
+                  </p>
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">Interests</h3>
+                      <h3 className="text-base sm:text-lg font-semibold mb-2">
+                        Interests
+                      </h3>
                       <div className="flex flex-wrap gap-2">
                         {tabContent.about.interests.map((interest, i) => (
-                          <Badge key={i} variant="secondary">
+                          <Badge key={i} variant="secondary" className="text-xs sm:text-sm">
                             {interest}
                           </Badge>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">Languages</h3>
+                      <h3 className="text-base sm:text-lg font-semibold mb-2">
+                        Languages
+                      </h3>
                       <div className="flex flex-wrap gap-2">
                         {tabContent.about.languages.map((language, i) => (
-                          <Badge key={i} variant="secondary">
+                          <Badge key={i} variant="secondary" className="text-xs sm:text-sm">
                             {language}
                           </Badge>
                         ))}
@@ -318,12 +379,7 @@ const ResumePage = () => {
         </motion.div>
       </Container>
     </section>
-  )
-}
+  );
+};
 
-
-export default ResumePage
-
-
-
-
+export default ResumePage;

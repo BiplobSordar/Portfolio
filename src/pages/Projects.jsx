@@ -25,43 +25,6 @@ import projectFour from "@/images/sms.png";
 import { Link } from "react-router-dom";
 
 
-// const projects = [
-//   {
-//     id: "01",
-//     title: "E-Tution",
-//     category: "Full Stack",
-//     description:
-//       "A modern, full-featured tuition management platform that connects Students, Tutors, and Admins with transparent workflows, secure payments, and role-based dashboards.",
-//     stack: ["React", "Express", "Tailwind CSS", "Redux", "Strapi", "MongoDb", "Firebase"],
-//     image: projectOne,
-//     liveUrl: "https://e-tution-client.vercel.app/",
-//     githubUrl: "https://github.com/BiplobSordar/e-tution-client",
-//   },
-//   {
-//     id: "02",
-//     title: "PawMart ",
-//     category: "Full Stack",
-//     description:
-//       "PawMart is a community-driven platform where pet owners, breeders, and shops can list pets for adoption or sell pet-related products (food, toys, accessories, etc.). Buyers and adopters can browse, contact, and order directly.",
-//     stack: ["React", "Express", "Tailwind CSS", "MongoDb", "Firebase"],
-//     image: projectTwo,
-//     liveUrl: "https://paw-mart-client.vercel.app/",
-//     githubUrl: "https://github.com/BiplobSordar/PawMart-Client",
-//   },
-//   {
-//     id: "03",
-//     title: "GreenNest - Indoor Plant Store",
-//     category: "Frontend",
-//     description:
-//       "GreenNest is a modern web application for indoor plant enthusiasts. Our platform allows users to browse, explore, and purchase beautiful indoor plants while managing their profiles and preferences.",
-//     stack: ["React", , "Tailwind CSS", "MongoDb",],
-//     image: projectThree,
-//     liveUrl: "https://greennest-store.vercel.app/",
-//     githubUrl: "https://github.com/BiplobSordar/greennest-store",
-//   },
-// ];
-
-
 const projects = [
  {
     id: "01",
@@ -71,8 +34,8 @@ const projects = [
       "A comprehensive school management system with multiple user roles (Admin, Teacher, Student, Parent). Features include student enrollment, attendance tracking, grade management, fee collection, exam scheduling, dynamic report generation, and real-time notifications using Socket.io.",
     stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "JWT", "Tailwind CSS", "PDF Generation"],
     image: projectFour, // Add your image variable here
-    liveUrl: "https://school-management-client.vercel.app/", // Replace with actual URL
-    githubUrl: "https://github.com/BiplobSordar/school-management-system", // Replace with actual GitHub URL
+    liveUrl: "https://school-management-system-eight-iota.vercel.app/", // Replace with actual URL
+    githubUrl: "https://github.com/ZilhajSajid/school-management-system.git", // Replace with actual GitHub URL
   },
   {
     id: "02",
